@@ -1,5 +1,5 @@
 #!/bin/sh
-#It it a shell script for installing a graphic card driver.
+#It is a shell script for installing a graphic card driver.
 yum -y update
 yum -y install kernel-devel
 yum -y install kernel-headers
