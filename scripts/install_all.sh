@@ -3,3 +3,4 @@ mpv.sh
 nvidia.sh
 rmbeep.sh
 utility.sh
+code.sh
