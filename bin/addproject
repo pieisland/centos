@@ -3,58 +3,15 @@
 import sys
 import os
 
-#os.makedirs("/project/%s" % (sys.argv[1]))
-#if len(sys.argv) == 1:
-#	종료
-#if len(sys.argv) == 2:
-#	ok
+ROOT="/project"
 
-#print "프로젝트 다음의 폴더 이름 입력"
-#os.makedirs("/project/%s" % (sys.argv[1])
-
-#a=input("몇 개의 폴더를 만들 것인지 입력")
-
-
-"""
-"""
-
-#for i in ["asset", "config", "doc", "edit", "in", "out", "shot"]:
-#	os.makedirs("/project/coco/"+i)
-
-"""
-for i in ["char", "shader"]:
-	os.makedirs("/project/coco/asset/"+i)
-
-for i in ["ocio", "thumbnail"]:
-	os.makedirs("/project/coco/config/"+i)
-
-os.makedirs("/project/coco/doc/concept")
-
-"""
-
-"""
-os.makedirs("/project/coco")
-root="/project/coco/"
-
-for i in ["asset", "config", "doc", "edit", "in", "out", "shot"]:
-	os.makedirs(root+i)
-	if i=="asset":
-		for k in ["char", "shader"]:
-			os.makedirs(root+i+"/"+k)
-	elif i=="config":
-		for k in ["ocio, "thumbnail"]:
-	elif i=="doc":
-		os.makedirs(root+i+"/concept")
-
-	else continue
-"""
-
-def addProject(name):
+def addProject(projectName):
+		
+	global ROOT
 	"""
 	프로젝트 하위 경로를 생성하는 함수.
 	"""
-	root="/project"
-	subdirs = ["shot",
+	subdirs = [ "shot",
 				"in", 
 				"out", 
 				"edit", 
@@ -66,16 +23,75 @@ def addProject(name):
 				"config/thumbnail", 
 				"doc", 
 				"doc/concept"]
-	
-	for d in subdirs:
-		p =  "/".join([root, name, d])
-		os.makedirs(p)
 
-if __name__=="__maidn__":
+	for d in subdirs:
+		p =  "/".join([ROOT, projectName, d])
+		
+		#if os.path.exists(p):
+		#	print "That directory is already exist."
+		#	continue
+		try:	
+			os.makedirs(p)
+		except:
+			return "%s 프로젝트를 만들 수 없음."%(p)
+	return None
+
+def checkRoot():
+	"""
+	/project 폴더가 존재하는지 체크한다.
+	"""
+	global ROOT
+	#if not os.path.exists(root):
+	#	print "make ", root
+	#	os.makedirs(p)
+	#else:
+	#	print "/project is exists"
+	
+	if not os.path.exists(ROOT):
+		return "/project 폴더가 존재하지 않습니다."
+	return None
+		
+def isProject(projectName):
+	"""
+	프로젝트가 이미 존재하는지 체크한다.
+	"""
+
+	global ROOT
+
+	#project_=root+"/"+name
+	#if not os.path.exists(project_):
+	#	print "make ", root, "/", name
+	#	os.makedirs(project_)
+	#else:
+	#	print "/project/", name, "is exists"
+	#	sys.exit()
+	
+	if os.path.exists("%s/%s" % (ROOT, projectName)):
+		return "%s 프로젝트가 이미 존재합니다."%(projectName)
+	return None
+
+def help():
+	print "How to use:"
+	print "$ addproject projectname"
+
+if __name__=="__main__":
+	#입력갯수 체크
 	if len(sys.argv)!=2:
-		print "How to use:"
-		print "$ addproject projectName"
-		sys.exit()
-	name=sys.argv[1]
-	addProject(name)
- 
+		help()	
+		sys.exit(1)
+	projectName = sys.argv[1]
+	#/project 존재유무 체크
+	err = checkRoot()
+	if err:
+		print err
+		sys.exit(1)
+	#프로젝트가 이미 존재하는지 체크
+	err = isProject(projectName)
+	if err:
+		print err
+		sys.exit(1)
+	#프로젝트를 생성할 수 있는지 체크
+	err = addProject(projectName)
+	if err :
+		print err
+		sys.exit(1)
