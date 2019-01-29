@@ -2,7 +2,7 @@
 
 VER="cmake-3.13.3"
 cd /tmp
-rm cmake*
+rm /tmp/cmake*
 wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3.tar.gz
 if [! -d "/home/$USER/app" ]; then
 	mkdir /home/$USER/app
