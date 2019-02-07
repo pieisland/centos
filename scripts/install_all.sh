@@ -8,3 +8,4 @@ rmbeep.sh
 trans.sh
 devtools.sh
 ffmpeg.sh
+hadnbrake.sh
