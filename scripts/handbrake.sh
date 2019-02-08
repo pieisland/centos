@@ -15,10 +15,10 @@ yum -y localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusi
 yum -y install lame-devel x264-devel
 
 if [ ! -d "/home/$USER/app" ]; then
-	mkdir /home/$User/app
+	mkdir /home/$USER/app
 fi
 
-cd /home/$User/app
+cd /home/$USER/app
 git clone https://github.com/HandBrake/HandBrake.git
 cd HandBrake
 git tag --list | grep ^1\.1\.
