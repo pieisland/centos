@@ -9,3 +9,4 @@
 ./devtools.sh
 ./ffmpeg.sh
 ./handbrake.sh
+./openimageio.sh
