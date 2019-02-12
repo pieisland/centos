@@ -16,5 +16,4 @@ pip install --user xlutils
 pip install --user pillow
 pip install --user timecode
 pip install --user edl
-pip install --user PySide2
 pip install --user opentimelineio
