@@ -9,6 +9,7 @@ pip install --user PySide2
 pip install --user numpy
 pip install --user Cython
 pip install --user openpyxl
+pip install --user --upgrade lxml
 pip install --user xlsxwriter
 pip install --user xlrd
 pip install --user xlwt
