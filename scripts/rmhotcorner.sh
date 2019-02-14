@@ -8,4 +8,4 @@ fi
 yum -y install gnome-tweak-tool
 yum -y install gnome-shell-extension-no-hot-corner
 
-# $ gnome-tweaks
+# $ gnome-tweaks 명령어를 타이핑 후, 확장 메뉴에서 "no topleft hot corner"를 켭니다.
