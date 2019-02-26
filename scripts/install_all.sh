@@ -1,18 +1,19 @@
 #!/bin/sh
 
+#This script installs software in centOS7.6.
+#환경에 따라 다르게 설치.
 if [[$EUID -e 0]]; then
-    ./root/nvidia.sh  
-    ./root/utility.sh 
-    ./root/code.sh 
-    ./root/djv.sh 
-    ./root/mpv.sh
-    ./root/devtools.sh
-    ./root/handbrake.sh
-    ./root/openimageio.sh
-    ./root/rmhotcorner.sh
+	./root/nvidia.sh  
+	./root/utility.sh 
+	./root/code.sh 
+	./root/djv.sh 
+	./root/mpv.sh
+	./root/devtools.sh
+	./root/handbrake.sh
+	./root/openimageio.sh
+	./root/rmhotcorner.sh
 	./rmbeep.sh
 else
-
 	# install $USER
 	./rmbeep.sh
 	./user/trans.sh
